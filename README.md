@@ -2,7 +2,7 @@
 Overview
 This project involves creating a fully functional and responsive website for Springdale Public School using React.js. The website includes various sections such as Home, About Us, Academics, Admissions, Faculty, Students, Gallery, and Contact Us. It demonstrates proficiency in React.js, responsive design, state management, and modern frontend development practices.
 
-Live Url : school-website-orpin-kappa.vercel.app
+Live Url : https://school-website-orpin-kappa.vercel.app/
 
 - Installation
 1. Clone the repository:
