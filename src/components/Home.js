@@ -4,7 +4,7 @@ import CarouselComponent from './Carousel';
 import SchoolContext from '../context/SchoolContext';
 import logo from '../assets/logo.png';
 import main from '../assets/main.png';
-import { MdImportantDevices } from "react-icons/md";
+import { MdImportantDevices, MdAdd, MdRemove } from "react-icons/md";
 
 function Home() {
   const { schoolData } = useContext(SchoolContext);
@@ -17,7 +17,7 @@ function Home() {
   return (
     <>
       <div className='home w-full h-[94vh] relative flex flex-col md:flex-row'>
-        <div className='flex flex-col px-5 md:px-20 gap-3 w-full md:w-[50%]  justify-center'>
+        <div className='flex flex-col px-5 md:px-20 gap-3 w-full md:w-[50%] justify-center'>
           <img src={logo} className='w-[120px] md:w-[150px]' alt="School Logo" />
           <h2 className='text-xl md:text-3xl font-black leading-tight w-full md:w-[50%]'>
             Education is the key to unlocking the world, a passport to freedom.
@@ -52,7 +52,7 @@ function Home() {
       </div>
 
       <div className='faqs w-full h-fit relative overflow-hidden p-5 md:p-10 flex flex-col gap-4 px-5 md:px-10'>
-        <h2 className='text-xl md:text-3xl font-black leading-tight'>Frequently Asked Questions</h2>
+        <h2 className='text-xl md:text-3xl font-black leading-tight mb-5'>Frequently Asked Questions</h2>
         {[
           { question: "What is the admission process?", answer: schoolData.admissionProcess },
           { question: "What are the admission criteria?", answer: schoolData.admissionCriteria },
@@ -77,14 +77,18 @@ function Home() {
           { question: "What is the school's contact information?", answer: schoolData.contactInfo }
         ].map((faq, index) => (
           <div key={index} className='faq-item border-b'>
-            <h3
-              className='text-lg md:text-xl font-semibold cursor-pointer'
-              onClick={() => toggleFAQ(index)}
-            >
-              {faq.question}
-            </h3>
+            <div className='flex items-center justify-between cursor-pointer' onClick={() => toggleFAQ(index)}>
+              <h3 className='text-lg md:text-xl font-semibold'>
+                {index + 1}. {faq.question}
+              </h3>
+              {openFAQ === index ? (
+                <MdRemove className='text-xl' />
+              ) : (
+                <MdAdd className='text-xl' />
+              )}
+            </div>
             <div className={`transition-all duration-300 ${openFAQ === index ? 'max-h-screen' : 'max-h-0 overflow-hidden'}`}>
-              <p>{faq.answer}</p>
+              <p className='mt-2'>{faq.answer}</p>
             </div>
           </div>
         ))}
